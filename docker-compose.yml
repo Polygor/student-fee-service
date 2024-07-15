@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  student-service:
+    build:
+      context: ./student-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - eureka-server
+    environment:
+      - http://eureka-server:8761/eureka
+
+  receipt-service:
+    build:
+      context: ./receipt-service
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - eureka-server
+    environment:
+      - http://eureka-server:8761/eureka
+
+  payment-service:
+    build:
+      context: ./payment-service
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - eureka-server
+    environment:
+      - http://eureka-server:8761/eureka
+
+  eureka-server:
+    image: springcloud/eureka
+    ports:
+      - "8761:8761"
