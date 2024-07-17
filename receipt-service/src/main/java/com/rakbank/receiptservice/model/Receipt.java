@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
@@ -21,7 +22,7 @@ public class Receipt {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long studentId;
-    private Double amount;
+    private BigDecimal amount;
     private Timestamp date;
     private String details;
     private String status;
